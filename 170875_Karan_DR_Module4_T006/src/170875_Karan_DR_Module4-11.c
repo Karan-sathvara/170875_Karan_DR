@@ -1,10 +1,9 @@
 /*
-* File Name     : 170875_Karan_DR_Module4-3.c
-* Description   : Given the basic framework,
-*                -   it's straightforward to extend the calculator.
-*                - Add the modulus (%) operator and provisions for negative numbers.
+* File Name     : 170875_Karan_DR_Module4-11.c
+* Description   : Modify getop so that it doesn't need to use ungetch.
+*               - Hint: use an internal static variable.
 * Author        : Karan Sathvara
-* Created       : 03-03-2026
+* Created       : saturday
 */
 
 #include <stdio.h>
@@ -18,18 +17,19 @@
 #define MAXVAL 100
 
 int sp = 0;
-double stack[MAXVAL];
+double val[MAXVAL];
+
 
 /*
 * Function Name : push
 * Description   : this function push values on stack
 * Author        : Karan Sathvara
-* Created       : 03-03-2026
+* Created       : saturday
 */
 
 void push(double f){
     if (sp < MAXVAL){
-        stack[sp++] = f;
+        val[sp++] = f;
     }
     else{
         printf("stack is full\n");
@@ -41,12 +41,12 @@ void push(double f){
 * Function Name : pop
 * Description   : this function return top value from stack
 * Author        : Karan Sathvara
-* Created       : 03-03-2026
+* Created       : saturday
 */
 
 double pop(void){
     if (sp > 0)
-        return stack[--sp];
+        return val[--sp];
     else {
         printf("stack is empty\n");
         return 0;
@@ -54,60 +54,28 @@ double pop(void){
 }
 
 /*
-* Function Name : getch
-* Description   : this function will take one character from buffer and see
-*		- if something pushed back then return that otherwise read from stdin
-* Author        : Karan Sathvara
-* Created       : 03-03-2026
-*/
-
-#define BUFSIZE 100
-
-char buf[BUFSIZE];
-int bufp = 0;
-
-int getch(void){
-    if(bufp > 0){
-	return buf[--bufp];
-    }
-    else{
-	return getchar();
-    }
-}
-
-
-/*
-* Function Name : ungetch
-* Description   : this function will push one character back into buffer
-* Author        : Karan Sathvara
-* Created       : 03-03-2026
-*/
-
-void ungetch(int c)
-{
-    if (bufp >= BUFSIZE){
-        printf("ungetch: too many characters\n");
-        return;
-    }
-    else{
-        buf[bufp++] = c;
-    }
-}
-
-/*
 * Function Name : getop
-* Description   : this function will decide that input is number or an operator
-*		- if it is number then take care of positive negative and floating number
-*		- if it is operator it will perform operation from main
+* Description   :
+*		-
+*		- if it is operator it will perform operation from main.
 * Author        : Karan Sathvara
-* Created       : 03-03-2026
+* Created       : saturday
 */
 
-int getop(char s[]){
-
+int getop(char s[])
+{
     int i, c;
+    static int buf = EOF;
 
-    while ((c = getch()) == ' ' || c == '\t');
+    if (buf != EOF) {
+        c = buf;
+        buf = EOF;
+    } else {
+        c = getchar();
+    }
+
+    while ((c == ' ' || c == '\t'))
+	c = getchar();
 
     s[0] = c;
     s[1] = '\0';
@@ -117,36 +85,35 @@ int getop(char s[]){
 
     i = 0;
 
-    /* handle minus sign */
     if (c == '-') {
-        int next = getch();
+        int next = getchar();
+
         if (!isdigit(next) && next != '.') {
-            ungetch(next);
+            buf = next;
             return '-';
         }
+
         s[i++] = c;
         c = next;
     }
 
     /* store first digit */
-    if (isdigit(c) || c == '.'){
+    if (isdigit(c)){
         s[i++] = c;
-    }
-
-    while (isdigit(c = getch())){
-	s[i++] = c;
+        while (isdigit(c = getchar()))
+            s[i++] = c;
     }
 
     if (c == '.'){
         s[i++] = c;
-        while (isdigit(c = getch()))
+        while (isdigit(c = getchar()))
             s[i++] = c;
     }
 
     s[i] = '\0';
 
     if (c != EOF){
-        ungetch(c);
+	buf = c;
     }
     return NUMBER;
 }
@@ -157,10 +124,10 @@ int getop(char s[]){
 * Expected input: 10 20 +
 * Expected output: 30
 * Author        : Karan Sathvara
-* Created       : 03-03-2026
+* Created       : saturday
 */
 
-void reverse_Polish_calculator(){
+void modified_getop(){
 
     int getop(char []);
     void push(double);
@@ -194,11 +161,11 @@ void reverse_Polish_calculator(){
 
 	case '/':
 	    op2 = pop();
-
 	    if (op2 != 0.0)
-	        push(pop() / op2);
-	    else
-	        printf("zero divisor\n");
+	    push(pop() / op2);
+
+	else
+	    printf("zero divisor\n");
 	break;
 
 	case '%':
@@ -217,6 +184,7 @@ void reverse_Polish_calculator(){
 	default:
 	    printf("Unknown command %s\n", s);
 	    return;
+	    break;
         }
     }
 }

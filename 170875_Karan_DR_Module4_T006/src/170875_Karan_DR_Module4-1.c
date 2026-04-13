@@ -44,5 +44,6 @@ void strindex(){
 	        return;
 	    }
     }
+
     printf("No substring found\n");
 }

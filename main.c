@@ -10,7 +10,7 @@
 #include "header.h"
 #include <stdint.h>
 
-int main() {
+int main(int argc, char *argv[]){
 
 /* --------- Module 1  --------- */
 
@@ -191,13 +191,77 @@ int main() {
     integer_to_char_recursive();
 
 #elif MODULE == 4 && TASK == 13
-    reverse_recursively();
+    reverse1_recursively();
 
 #elif MODULE == 4 && TASK == 14
     swap_elements();
 
 
+/* --------- Module 5  --------- */
 
+
+#elif MODULE == 5 && TASK == 1
+    getint();
+
+#elif MODULE == 5 && TASK == 2
+    getfloat();
+
+#elif MODULE == 5 && TASK == 3
+    str_cat();
+
+#elif MODULE == 5 && TASK == 4
+    str_end();
+
+#elif MODULE == 5 && TASK == 5
+    versions_of_libFunctions();
+
+#elif MODULE == 5 && TASK == 6
+    pointer_versions_of_Functions();
+
+#elif MODULE == 5 && TASK == 7
+    modified_readlines();
+
+#elif MODULE == 5 && TASK == 8
+    calender();
+
+#elif MODULE == 5 && TASK == 9
+    calender_using_ptr();
+
+#elif MODULE == 5 && TASK == 10
+    RPN_using_CLI(argc,argv);
+
+#elif MODULE == 5 && TASK == 11
+    entab_detab_CLI(argc,argv);
+
+#elif MODULE == 5 && TASK == 12
+    modified_entab_detab_CLI(argc,argv);
+
+#elif MODULE == 5 && TASK == 13
+    tail(argc,argv);
+
+#elif MODULE == 5 && TASK == 14
+    modified_sort(argc, argv);
+
+#elif MODULE == 5 && TASK == 15
+    addedFolding_sort(argc, argv);
+
+#elif MODULE == 5 && TASK == 16
+    addedDir_order_sort(argc, argv);
+
+#elif MODULE == 5 && TASK == 17
+    sort_specific_fields(argc, argv);
+
+#elif MODULE == 5 && TASK == 18
+    modified_dcl();
+
+#elif MODULE == 5 && TASK == 19
+    undcl();
+
+#elif MODULE == 5 && TASK == 20
+    modified_dcl_for_args();
+
+#elif MODULE == 5 && TASK == 200
+    modified_dcl_for_args();
 
 #endif
 

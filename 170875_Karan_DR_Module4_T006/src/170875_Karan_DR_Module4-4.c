@@ -53,7 +53,12 @@ int bufp = 0;
 
 int getch(void){
 
-    return (bufp > 0) ? buf[--bufp] : getchar();
+    if(bufp > 0){
+        return buf[--bufp];
+    }
+    else{
+        return getchar();
+    }
 }
 
 /*
@@ -154,7 +159,7 @@ void duplicate_swap_clear_stack(){
     int type;
     char s[MAXOP];
 
-    printf("Press CTRL + D to exit..\n");
+    printf("Press CTRL + D to exit..\n\n");
     printf("Enter digits for operation : ");
     while ((type = getop(s)) != EOF) {
 
@@ -170,20 +175,34 @@ void duplicate_swap_clear_stack(){
             }
             break;
 
+        case 's':
+            if(sp >=2){
+                double temp = stack[sp-1];
+                stack[sp-1] = stack[sp-2];
+                stack[sp-2] = temp;
+            }
+            break;
+
         case 'c':
-            sp = 0;
+	    while(sp > 0){
+		--sp;
+	    }
 	    printf("stack is empty\n");
             break;
 
 	case 'p':
 	    if(sp > 0){
 		int8_t count;
+		printf("How many top elements do you want?\n");
+		scanf("%hhd", &count);
+/*
 		if(getop(s) == NUMBER){
 		    count = atof(s);
 		}
 		else{
 		    count = 1;
 		}
+*/
                 if(count > sp){
                     printf("stack is not that big.\n");
                     break;
@@ -192,6 +211,7 @@ void duplicate_swap_clear_stack(){
 		for(int i = sp-1; i >= sp-count; i--){
 		    printf("Top: %.2f\n", stack[i]);
 		}
+		return;
 	    }
 	    break;
 
@@ -200,7 +220,7 @@ void duplicate_swap_clear_stack(){
 		for(int i = sp-1; i >= 0; i--){
 	            printf("%.2f ", stack[i]);
     	        }
-	    printf("\n");
+	    printf("\n\n");
             return;
 
         default:

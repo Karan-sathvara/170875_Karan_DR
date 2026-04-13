@@ -125,10 +125,56 @@ void modified_getop();
 
 void integer_to_char_recursive();
 
-void reverse_recursively();
+void reverse1_recursively();
 
 void swap_elements();
 
+/* ------ Module 5 ------ */
 
+void getint();
+
+void getfloat();
+
+void str_cat();
+
+void str_end();
+
+void versions_of_libFunctions();
+
+void pointer_versions_of_Functions();
+
+void modified_readlines();
+
+void calender();
+
+void calender_using_ptr();
+
+void RPN_using_CLI(int8_t argc, char *argv[]);
+
+void entab_detab_CLI(int8_t argc, char *argv[]);
+
+void CLI_detab(int16_t tabstops[], int16_t ntab);
+void CLI_detab(int16_t tabstops[], int16_t ntab);
+
+void modified_entab_detab_CLI();
+
+void Mn_CLI_detab(int8_t idxM, int8_t idxN);
+void Mn_CLI_detab(int8_t idxM, int8_t idxN);
+
+void tail(int8_t argc, char *argv[]);
+
+void modified_sort(int8_t argc, char *argv[]);
+
+void addedFolding_sort(int8_t argc, char *argv[]);
+
+void addedDir_order_sort(int8_t argc,char *argv[]);
+
+void sort_specific_fields(int8_t argc, char *argv[]);
+
+void modified_dcl();
+
+void undcl();
+
+void modified_dcl_for_args();
 
 #endif

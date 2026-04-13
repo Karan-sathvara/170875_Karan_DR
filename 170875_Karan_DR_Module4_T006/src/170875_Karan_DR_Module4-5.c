@@ -46,7 +46,7 @@ void push(double f){
 double pop(){
     if(sp == 0){
         printf("Stack empty\n");
-        return 0.0;
+        return 0;
     }
     return stack[--sp];
 }

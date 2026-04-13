@@ -77,20 +77,23 @@ void binarysearch(){
     while(low <= high){
 	mid = (low + high)/2;
 
-	if(arr[mid] == element){
-	    printf("Element %d found in array at index : %d\n",element, mid);
-	    return;
-	}
-
-	else if(arr[mid] < element){
+	if(arr[mid] < element){
 	    low = mid + 1;
 	}
 
 	else{
 	    high = mid - 1;
 	}
+
     }
-    printf("Element is not found in array\n");
+
+    if(arr[mid] == element){
+        printf("Element %d found in array at index : %d\n",element, mid);
+        return;
+    }
+    else{
+	printf("Element is not found in array\n");
+    }
 }
 
 

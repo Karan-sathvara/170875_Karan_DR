@@ -18,7 +18,7 @@ SRC = $(MOD_DIR)/src/170875_Karan_DR_Module$(MODULE)-$(TASK).c
 OBJ = $(MOD_DIR)/obj/170875_Karan_DR_Module$(MODULE)-$(TASK).o
 
 
-TARGET = bin/main_1.out
+TARGET = bin/main.out
 
 all: run
 
@@ -37,10 +37,9 @@ $(COMMON_OBJ): $(COMMON_SRC)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: $(TARGET)
-	./$(TARGET)
+	./$(TARGET) $(ARGS)
 
 clean:
 	rm -rf */obj/*.o obj/*.o
 	rm -rf common_functions/*.o
-	rm -rf bin/*
 

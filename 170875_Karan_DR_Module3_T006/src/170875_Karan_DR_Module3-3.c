@@ -60,7 +60,7 @@ void trailing_dash(char str[]){
         while(str[idx] == '-'){
             idx--;
         }
-        str[idx+1] = '\0';
+        str[idx+2] = '\0';
 }
 
 /*

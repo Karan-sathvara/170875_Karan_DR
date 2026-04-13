@@ -47,8 +47,8 @@ double pop(void){
     if (sp > 0)
         return stack[--sp];
     else {
-        printf("stack empty\n");
-        return 0.0;
+        printf("stack is empty\n");
+        return 0;
     }
 }
 
@@ -97,7 +97,7 @@ void revised_calculator_using_getline(){
                 continue;
             }
 
-            if(isdigit(line[i]) || (line[i] == '-' && isdigit(line[i+1]))){
+            if(isdigit(line[i]) || (line[i] == '-' && (isdigit(line[i+1]) || line[i+1] == '.'))){
 
 		int sign = 1;
 
@@ -112,7 +112,17 @@ void revised_calculator_using_getline(){
                     num = num * 10 + (line[i] - '0');
                     i++;
                 }
+    		if(line[i] == '.'){
+        	   i++;
+        	   double power = 1.0;
 
+        	   while(isdigit(line[i])){
+            	       num = num * 10 + (line[i] - '0');
+            	       power *= 10;
+            	       i++;
+        	   }
+		   num = num / power;
+    		}
                 push(sign * num);
                 continue;
             }
@@ -145,9 +155,8 @@ void revised_calculator_using_getline(){
 		    }
 		    break;
 		}
-            i++;
+                i++;
         }
-
         printf("Result: %.8g\n", pop());
     }
 }

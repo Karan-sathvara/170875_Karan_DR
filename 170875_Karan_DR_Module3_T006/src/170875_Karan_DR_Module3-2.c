@@ -31,12 +31,40 @@ void escape(int16_t input, char output_str[], int16_t *index){
         }
 }
 
+void unescape(char original_str[], char output_str[]){
+
+    int16_t iidx = 0;
+    int16_t jidx = 0;
+
+    while(output_str[iidx] != '\0'){
+        if(output_str[iidx] == '\\') {
+            iidx++;
+            switch(output_str[iidx]){
+	        case 'n':
+		    original_str[jidx++] = '\n';
+		    break;
+	        case 't':
+                    original_str[jidx++] = '\t';
+                    break;
+	        default:
+		    original_str[jidx++] = output_str[iidx];
+	        }
+	}
+	else{
+	    original_str[jidx++] = output_str[iidx];
+	}
+	iidx++;
+    }
+    original_str[jidx] = '\0';
+    printf("Original string is : %s", original_str);
+}
 
 void escapes_tab_newline(){
 
     int16_t index = 0;
     int16_t input;
     char output_str[1000];
+    char original_str[1000];
 
     printf("Press CTRL + D to exit\n");
     printf("Enter input string: ");
@@ -46,6 +74,18 @@ void escapes_tab_newline(){
 
     output_str[index] = '\0';
     printf("converted string is: %s\n", output_str);
+    clearerr(stdin);
+
+    char choice;
+    printf("Do you want original input string?\n");
+    scanf(" %c", &choice);
+
+    if(choice == 'y' || choice == 'Y'){
+	unescape(original_str,output_str);
+    }
+    else{
+	printf("Program ended\n");
+    }
 }
 
 

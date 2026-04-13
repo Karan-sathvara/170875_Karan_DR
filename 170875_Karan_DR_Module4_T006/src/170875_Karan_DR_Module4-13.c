@@ -1,7 +1,7 @@
 /*
 * File Name     : 170875_Karan_DR_Module4-13.c
-* Description   : Write a recursive version of the function reverse(s),
-*		- which reverses the string s in place.
+* Description   : Write a recursive version of the function reverse1(s),
+*		- which reverse1s the string s in place.
 * Author        : Karan Sathvara
 * Created       : 09-03-2026
 */
@@ -12,15 +12,15 @@
 #include <string.h>
 
 /*
-* Function Name : reverse
-* Description   : this function will reverse string recursively
+* Function Name : reverse1
+* Description   : this function will reverse1 string recursively
 * Expected input: Karan
 * Expected output: naraK
 * Author        : Karan Sathvara
 * Created       : 09-03-2026
 */
 
-void reverse(char *input, int8_t start, int8_t end){
+void reverse1(char *input, int8_t start, int8_t end){
 
     if(start >= end){
 	return;
@@ -29,19 +29,19 @@ void reverse(char *input, int8_t start, int8_t end){
     char temp = input[start];
     input[start] = input[end];
     input[end] = temp;
-    reverse(input, start + 1, end - 1);
+    reverse1(input, ++start, --end);
 }
 
 /*
-* Function Name : reverse_recursively
-* Description   : this function will reverse string recursively
+* Function Name : reverse1_recursively
+* Description   : this function will reverse1 string recursively
 * Expected input: Karan
 * Expected output: narak
 * Author        : Karan Sathvara
 * Created       : 09-03-2026
 */
 
-void reverse_recursively(){
+void reverse1_recursively(){
 
     char input[100];
     int8_t len;
@@ -56,7 +56,7 @@ void reverse_recursively(){
     int8_t start = 0;
     int8_t end = len - 1;
 
-    reverse(input, start, end);
+    reverse1(input, start, end);
 
     printf("output string: %s\n", input);
 }

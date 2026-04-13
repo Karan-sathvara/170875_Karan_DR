@@ -12,10 +12,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-#define NUMBER '0'
-#define MAXVAL 100
-
-
 /*
 * Function Name : getch (modified) - will able to handle EOF because of int buf[]
 * Description   : EOF value is -1 which is handle by int
@@ -106,17 +102,8 @@ void eof_efficient(){
 	return;
     }
     printf("\n");
-
-
 }
 
-
-
-/*    while((fgets(s, 100, stdin)) != NULL){
-        for(int8_t i=0; s[i] != '\0'; i++){
-            c = s[0];
-        }
-*/
 
 
 

@@ -4,7 +4,7 @@
 *		- (It's easy to provide twenty-six variables with single-letter names.)
 *               - Add a variable for the most recently printed value.
 * Author        : Karan Sathvara
-* Created       : 00-03-2026
+* Created       : 03-03-2026
 */
 
 #include <stdio.h>
@@ -167,7 +167,9 @@ void assign_value_to_characters(){
     void push(double);
     double pop(void);
 
+    double value;
     double alpha[26] = {0};
+    double last_assigned = 0;
     int var = -1;
     int type;
     double op2;
@@ -206,14 +208,22 @@ void assign_value_to_characters(){
 
         case '=':
 	    pop();
-	    double value = pop();
+	    value = pop();
             alpha[var] = value;
+	    last_assigned = value;
             push(value);
 	    break;
 
+        case 'a':
+	    for(int8_t i=0; i < 26; i++){
+		if(alpha[i] != 0){
+		    printf("%c = %.2f\n", 'A' + i , alpha[i]);
+		}
+	    }
+	    return;
 
 	case 'l':
-	    printf("Last stored variable is %.2lf\n", value);
+	    printf("Last stored variable is %.2lf\n", last_assigned);
 	    return;
 
         case '\n':

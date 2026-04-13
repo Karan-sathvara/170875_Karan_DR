@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "header.h"
 #include "stdint.h"
+#include <string.h>
 
 /*
 * Function Name : printd
@@ -44,7 +45,7 @@ void printd(double digit, char store[], int16_t *index){
     if(frac > 0){
 	store[(*index)++] = '.';
 
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 10; i++){
 	    frac = frac * 10;
 	    int value = (int)frac;
 	    store[(*index)++] = value + '0';

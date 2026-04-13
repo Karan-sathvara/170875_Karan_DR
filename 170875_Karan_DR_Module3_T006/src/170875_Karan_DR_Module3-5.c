@@ -22,12 +22,13 @@ void itob(){
     int8_t base;
     int16_t index = 0;
 
-    printf("Enter digit:");
+    printf("Enter digit : ");
     scanf("%hd", &digit);
 
+    int16_t sign = digit;
+
     if(digit < 0){
-        printf("Enter a positive digit\n");
-        return;
+        digit = -digit;
     }
 
     printf("Enter base (between 2 to 16) :");
@@ -51,7 +52,10 @@ void itob(){
 	digit = digit / base;
     }
 
-    str[index] = '\0';
+    if(sign < 0){
+	str[index++] = '-';
+    }
+    str[index+1] = '\0';
     reverse(str);
 
     printf("Equivalent base : %s\n", str);

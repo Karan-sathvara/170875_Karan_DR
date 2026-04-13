@@ -10,6 +10,7 @@
 #include <string.h>
 #include "function.h"
 #include <stdlib.h>
+#include <ctype.h>
 
 /* Common function for q4 and q15 */
 
@@ -95,3 +96,5 @@ void reverse(char str[]){
         end--;
     }
 }
+
+
