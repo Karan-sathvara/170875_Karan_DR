@@ -145,26 +145,29 @@ void undcl(){
             }
 
             if (type == PARENS || type == BRACKETS){
-                strcat(out, token);
+    		if (out[0] == '*') {
+                    sprintf(temp, "%s%s", out, token);
+        	    sprintf(out, "(%s)",temp);
+    		} else {
+        	    sprintf(temp, "%s%s", out, token);
+		    strcpy(out, temp);
+    		}
 	    }
-
-            else if (type == '*') {
-                if (out[0] == '(') {
-                    sprintf(temp, "*%s", out);
-                }
-                else if (strstr(out, "()") || strstr(out, "[]")) {
-                    sprintf(temp, "(*%s)", out);
-                }
-                else {
-                    sprintf(temp, "*%s", out);
-                }
-                strcpy(out, temp);
-            }
 
             else if (type == NAME) {
                 sprintf(temp, "%s %s", token, out);
                 strcpy(out, temp);
             }
+
+            else if (type == '*') {
+		if (strchr(out, '(') || strchr(out, '[')) {
+                    sprintf(temp, "(*%s)", out);
+		}
+		else{
+		    sprintf(temp, "*%s", out);
+		}
+		strcpy(out, temp);
+	    }
 
             else {
                 printf("invalid input at %s\n", token);

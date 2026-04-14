@@ -188,6 +188,7 @@ int16_t compare_fields(void *a, void *b)
     char *save1, *save2;
 
     /* Category: Science, Page: 42  */
+    /* Category: Maths, Page: 4  */
 
     char *field1_1 = strtok_r(temp1, ",", &save1);
     char *field1_2 = strtok_r(NULL, ",", &save1);

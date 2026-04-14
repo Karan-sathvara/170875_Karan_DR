@@ -278,7 +278,7 @@ void addedDir_order_sort(int8_t argc, char *argv[])
             ifoldFlag = 1;
             ireverseFlag = 1;
         }
-        else if (strcmp(argv[1], "-fd") == 0) {
+        else if (strcmp(argv[1], "-fd") == 0) || strcmp(argv[1], "-df") == 0) {
             idirectoryFlag = 1;
 	    ifoldFlag = 1;
         }

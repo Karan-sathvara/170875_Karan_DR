@@ -30,12 +30,8 @@ void strcat_without_library(char *str1,char *str2){
         *str1++ = *str2++;
 
     }
-
-//   *str1 = '\0';
 }
 
-//     *str1 = '\0';     need of this.
-// 5.7 check
 
 void str_cat(){
 

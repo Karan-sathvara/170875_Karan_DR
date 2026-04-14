@@ -260,8 +260,11 @@ int main(int argc, char *argv[]){
 #elif MODULE == 5 && TASK == 20
     modified_dcl_for_args();
 
-#elif MODULE == 5 && TASK == 200
-    modified_dcl_for_args();
+
+/* --------- Module 6  --------- */
+
+#elif MODULE == 6 && TASK == 1
+    modified_getword();
 
 #endif
 

@@ -177,4 +177,8 @@ void undcl();
 
 void modified_dcl_for_args();
 
+/* ------ Module 6 ------ */
+
+void modified_getword();
+
 #endif

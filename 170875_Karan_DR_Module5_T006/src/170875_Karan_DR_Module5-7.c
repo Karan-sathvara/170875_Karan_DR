@@ -20,10 +20,10 @@ double cpu_time_used;
 
 char *lineptr[MAXLINES];
 
-int readlines(char *lineptr[], int16_t maxlines);
-void writelines(char *lineptr[], int8_t nlines);
-void quick_sort_lines(char *lineptr[], int16_t start, int16_t end);
-void swap(char *lineptr[], int16_t start, int16_t end);
+int readlines(char *lineptr[], int maxlines);
+void writelines(char *lineptr[], int nlines);
+void quick_sort_lines(char *lineptr[], int start, int end);
+void swap(char *lineptr[], int start, int end);
 int get_line(char *line, int max);
 
 /*
@@ -33,10 +33,10 @@ int get_line(char *line, int max);
 * Created       : 31-03-2026
 */
 
-int readlines(char *lineptr[], int16_t maxlines)
+int readlines(char *lineptr[], int maxlines)
 {
-    int16_t len = 0;
-    int8_t nlines = 0;
+    int len = 0;
+    int nlines = 0;
     char line[MAXLEN];
 
     static char linestore[MAXSTORAGE];
@@ -65,7 +65,7 @@ int readlines(char *lineptr[], int16_t maxlines)
 * Created       : 31-03-2026
 */
 
-void writelines(char *lineptr[], int8_t nlines){
+void writelines(char *lineptr[], int nlines){
 
     printf("\nSorted lines : \n");
     while (nlines-- > 0){
@@ -81,10 +81,10 @@ void writelines(char *lineptr[], int8_t nlines){
 * Created       : 31-03-2026
 */
 
-void quick_sort_lines(char *arr[], int16_t start, int16_t end)
+void quick_sort_lines(char *arr[], int start, int end)
 {
-    int16_t idx;
-    int16_t pivotIdx;
+    int idx;
+    int pivotIdx;
 
     if (start >= end)
         return;
@@ -109,7 +109,7 @@ void quick_sort_lines(char *arr[], int16_t start, int16_t end)
 * Created       : 31-03-2026
 */
 
-void swap(char *arr[], int16_t start, int16_t end)
+void swap(char *arr[], int start, int end)
 {
     char *temp;
     temp = arr[start];
@@ -126,7 +126,7 @@ void swap(char *arr[], int16_t start, int16_t end)
 
 int get_line(char *line, int max)
 {
-    int16_t ch = 0, idx = 0;
+    int ch = 0, idx = 0;
 
     while (idx < max - 1 && (ch = getchar()) != EOF && ch != '\n') {
         line[idx++] = ch;
@@ -149,7 +149,7 @@ int get_line(char *line, int max)
 
 void modified_readlines()
 {
-    int8_t nlines = 0;
+    int nlines = 0;
 
     start = clock();
     printf("Enter input : ");
