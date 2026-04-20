@@ -39,12 +39,15 @@ void strcat_without_library(char *str1,char *str2){
     }
 }
 
+<<<<<<< HEAD
 /*
 * Function Name : str_cat
 * Description   : this function takes input strings from user
 * Author        : Karan Sathvara
 * Created       : 29-03-2026
 */
+=======
+>>>>>>> 179060350d3ec2a847f3ea7a95e360dda2866215
 
 void str_cat(){
 

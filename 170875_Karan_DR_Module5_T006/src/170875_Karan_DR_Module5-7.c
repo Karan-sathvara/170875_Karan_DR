@@ -20,12 +20,15 @@ double cpu_time_used;
 
 char *lineptr[MAXLINES];
 
+<<<<<<< HEAD
 /*
 * Description   : Function prototypes
 * Author        : Karan Sathvara
 * Created       : 31-03-2026
 */
 
+=======
+>>>>>>> 179060350d3ec2a847f3ea7a95e360dda2866215
 int readlines(char *lineptr[], int maxlines);
 void writelines(char *lineptr[], int nlines);
 void quick_sort_lines(char *lineptr[], int start, int end);
