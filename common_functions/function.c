@@ -98,3 +98,42 @@ void reverse(char str[]){
 }
 
 
+#define BUFSIZE 100
+
+/*
+* Function Name : getch
+* Description   : this function will take one character from buffer and see
+*               - if something pushed back then return that otherwise read from stdin
+* Author        : Karan Sathvara
+* Created       : 14-04-2026
+*/
+
+char buf[BUFSIZE];
+int bufp = 0;
+
+int getch(void)
+{
+    if (bufp > 0){
+        return buf[--bufp];
+    }
+    else{
+        return getchar();
+    }
+}
+
+/*
+* Function Name : ungetch
+* Description   : this function will push one character back into buffer
+* Author        : Karan Sathvara
+* Created       : 14-04-2026
+*/
+
+void ungetch(int8_t c)
+{
+    if (bufp >= BUFSIZE){
+        printf("ungetch: too many characters\n");
+    }
+    else{
+        buf[bufp++] = c;
+    }
+}

@@ -10,31 +10,14 @@
 #include <stdio.h>
 #include "header.h"
 #include <ctype.h>
+#include "function.h"
 
-#define BUFSIZE 100
-char buf[BUFSIZE];
-int bufp = 0;
-
-void ungetch(int c)
-{
-    if (bufp >= BUFSIZE){
-        printf("ungetch: too many characters\n");
-        return;
-    }
-    else{
-        buf[bufp++] = c;
-    }
-}
-
-
-int getch(void){
-    if(bufp > 0){
-        return buf[--bufp];
-    }
-    else{
-        return getchar();
-    }
-}
+/*
+* Function Name : getint_fun
+* Description   : this function validate user input and take only integer as input
+* Author        : Karan Sathvara
+* Created       : 27-03-2026
+*/
 
 void getint_fun(int16_t *num){
 
@@ -92,6 +75,13 @@ void getint_fun(int16_t *num){
 
     printf("Output : %d\n", *num);
 }
+
+/*
+* Function Name : getint
+* Description   : this function pass int arg to another function
+* Author        : Karan Sathvara
+* Created       : 27-03-2026
+*/
 
 void getint(){
 

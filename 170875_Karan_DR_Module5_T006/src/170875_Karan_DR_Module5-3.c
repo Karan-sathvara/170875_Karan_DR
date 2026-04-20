@@ -3,11 +3,18 @@
 * Description   : Write a Function strcat
 *                - strcat(s,t) copies the string t to the end of s.
 * Author        : Karan Sathvara
-* Created       : 00-03-2026
+* Created       : 29-03-2026
 */
 
 #include <stdio.h>
 #include "header.h"
+
+/*
+* Function Name : strcat_without_library
+* Description   : this function concatenates string without library function using pointers
+* Author        : Karan Sathvara
+* Created       : 29-03-2026
+*/
 
 void strcat_without_library(char *str1,char *str2){
 
@@ -30,12 +37,14 @@ void strcat_without_library(char *str1,char *str2){
         *str1++ = *str2++;
 
     }
-
-//   *str1 = '\0';
 }
 
-//     *str1 = '\0';     need of this.
-// 5.7 check
+/*
+* Function Name : str_cat
+* Description   : this function takes input strings from user
+* Author        : Karan Sathvara
+* Created       : 29-03-2026
+*/
 
 void str_cat(){
 

@@ -10,31 +10,14 @@
 #include <stdio.h>
 #include "header.h"
 #include <ctype.h>
+#include "function.h"
 
-#define BUFSIZE 100
-char buf[BUFSIZE];
-int bufp = 0;
-
-void ungetch(int c)
-{
-    if (bufp >= BUFSIZE){
-        printf("ungetch: too many characters\n");
-        return;
-    }
-    else{
-        buf[bufp++] = c;
-    }
-}
-
-
-int getch(void){
-    if(bufp > 0){
-        return buf[--bufp];
-    }
-    else{
-        return getchar();
-    }
-}
+/*
+* Function Name : getfloat_fun
+* Description   : this function validate user input for floating value
+* Author        : Karan Sathvara
+* Created       : 27-03-2026
+*/
 
 void getfloat_fun(double *num){
 
@@ -105,6 +88,13 @@ void getfloat_fun(double *num){
 
     printf("Output : %lf\n", *num);
 }
+
+/*
+* Function Name : getfloat
+* Description   : this function pass float arg to another function
+* Author        : Karan Sathvara
+* Created       : 27-03-2026
+*/
 
 void getfloat(){
 

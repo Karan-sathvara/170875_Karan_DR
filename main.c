@@ -260,8 +260,30 @@ int main(int argc, char *argv[]){
 #elif MODULE == 5 && TASK == 20
     modified_dcl_for_args();
 
-#elif MODULE == 5 && TASK == 200
-    modified_dcl_for_args();
+
+/* --------- Module 6  --------- */
+
+#elif MODULE == 6 && TASK == 1
+    modified_getword();
+
+#elif MODULE == 6 && TASK == 2
+    word_freq_group_using_BST();
+
+#elif MODULE == 6 && TASK == 3
+    word_freq_withoutNoise_withLineNo_using_BST();
+
+#elif MODULE == 6 && TASK == 4
+    word_freq_decreasing_order_using_BST();
+
+#elif MODULE == 6 && TASK == 5
+    hash_table();
+
+#elif MODULE == 6 && TASK == 6
+    hashtable_with_macro();
+
+/* --------- Module 7  --------- */
+
+
 
 #endif
 

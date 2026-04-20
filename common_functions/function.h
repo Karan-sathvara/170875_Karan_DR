@@ -17,11 +17,8 @@ void reverse(char str[]);
 
 /* Stack functions */
 
-void push(double f);
-double pop(void);
 int getch(void);
-void ungetch(int c);
-int getop(char *s);
+void ungetch(int8_t c);
 
 
 #endif

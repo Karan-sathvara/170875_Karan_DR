@@ -177,4 +177,21 @@ void undcl();
 
 void modified_dcl_for_args();
 
+/* ------ Module 6 ------ */
+
+void modified_getword();
+
+void word_freq_group_using_BST();
+
+void word_freq_withoutNoise_withLineNo_using_BST();
+
+void word_freq_decreasing_order_using_BST();
+
+void hash_table();
+
+void hashtable_with_macro();
+
+/* ------ Module 7 ------ */
+
+
 #endif

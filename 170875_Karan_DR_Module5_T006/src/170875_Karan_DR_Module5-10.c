@@ -18,6 +18,13 @@
 int sp = 0;
 double stack[MAXVAL];
 
+/*
+* Function Name : push
+* Description   : this function push one char on stack
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
+
 void push(double f){
     if (sp < MAXVAL){
         stack[sp++] = f;
@@ -54,7 +61,6 @@ void RPN_using_CLI(int8_t argc, char *argv[]) {
     double pop(void);
 
     double op2;
-// 25 45 + : how argv accepting/storing it
     for (int8_t i = 1; i < argc; i++) {
 
 /*

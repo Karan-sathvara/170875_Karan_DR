@@ -10,6 +10,16 @@
 #include "header.h"
 #include <string.h>
 
+/*
+* Function Name : strend
+* Description   : this function finds if string 2 occurs at string 1's end or not
+* Input string1 : Karan
+* Input string2 : ran
+* Output        : 1 or substring occurs
+* Author        : Karan Sathvara
+* Created       : 30-03-2026
+*/
+
 void strend(char *str1,char *str2){
 
     char *ptr1 = str1;
@@ -35,6 +45,12 @@ void strend(char *str1,char *str2){
     printf("String 2 occurs at end of String 1\n");
 }
 
+/*
+* Function Name : str_end
+* Description   : this function takes input strings from user
+* Author        : Karan Sathvara
+* Created       : 30-03-2026
+*/
 
 void str_end(){
 

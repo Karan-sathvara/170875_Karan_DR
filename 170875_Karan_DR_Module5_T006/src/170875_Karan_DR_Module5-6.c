@@ -15,8 +15,8 @@
 #include "header.h"
 #include <stdint.h>
 #include <string.h>
-#include <ctype.h>
 #include "function.h"
+#include <ctype.h>
 #include <stdlib.h>
 #include <ctype.h>
 
@@ -26,6 +26,13 @@
 
 int sp = 0;
 double stack[MAXVAL];
+
+/*
+* Function Name : push
+* Description   : this function push one char on stack
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
 
 void push(double f){
     if (sp < MAXVAL){
@@ -37,6 +44,13 @@ void push(double f){
     }
 }
 
+/*
+* Function Name : pop
+* Description   : this function pop out one char from stack
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
+
 double pop(void){
     if (sp > 0)
         return *(stack + --sp);
@@ -46,30 +60,12 @@ double pop(void){
     }
 }
 
-#define BUFSIZE 100
-
-char buf[BUFSIZE];
-int bufp = 0;
-
-int getch(void){
-    if(bufp > 0){
-        return *(buf + --bufp);
-    }
-    else{
-        return getchar();
-    }
-}
-
-void ungetch(int c)
-{
-    if (bufp >= BUFSIZE){
-        printf("ungetch: too many characters\n");
-        return;
-    }
-    else{
-        *(buf + bufp++) = c;
-    }
-}
+/*
+* Function Name : getop
+* Description   : this function will get operator for RPN calculation
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
 
 int getop(char *s){
 
@@ -116,6 +112,12 @@ int getop(char *s){
     return NUMBER;
 }
 
+/*
+* Function Name : RPN_using_ptr
+* Description   : this function will perform RPN calculator
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
 
 void RPN_using_ptr(){
 
@@ -174,6 +176,12 @@ void RPN_using_ptr(){
 }
 
 
+/*
+* Function Name : getline_using_ptr
+* Description   : this function will take user input char by char and add in string
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
 
 void getline_using_ptr(char *str1, int16_t max){
 
@@ -190,7 +198,12 @@ void getline_using_ptr(char *str1, int16_t max){
     printf("Entered string is : %s\n", str1);
 }
 
-
+/*
+* Function Name : reverse_using_ptr
+* Description   : this function reverse a string using pointer
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
 
 void reverse_using_ptr(char *str1){
 
@@ -214,6 +227,13 @@ void reverse_using_ptr(char *str1){
     }
     printf("Output string is : %s\n", input);
 }
+
+/*
+* Function Name : itoa_using_ptr
+* Description   : this function will convert integer to string using pointer
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
 
 void itoa_using_ptr(int16_t digit, char *str1){
 
@@ -239,6 +259,13 @@ void itoa_using_ptr(int16_t digit, char *str1){
     reverse_using_ptr(str1);
 
 }
+
+/*
+* Function Name : atoi_using_ptr
+* Description   : this function will convert string to integer using pointer
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
 
 void atoi_using_ptr(char *str1) {
 
@@ -278,6 +305,13 @@ void atoi_using_ptr(char *str1) {
     printf("Output is : %hd\n", answer);
 }
 
+/*
+* Function Name : strindex_using_ptr
+* Description   : this function will find substring index from rightmost side
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
+
 void strindex_using_ptr(char *str1, char *str2){
 
     int16_t len1;
@@ -304,6 +338,12 @@ void strindex_using_ptr(char *str1, char *str2){
 
 }
 
+/*
+* Function Name : pointer_versions_of_Functions
+* Description   : this is the main function control the execution of program
+* Author        : Karan Sathvara
+* Created       : 31-03-2026
+*/
 
 void pointer_versions_of_Functions(){
 
