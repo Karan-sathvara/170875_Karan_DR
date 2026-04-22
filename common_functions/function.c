@@ -48,29 +48,6 @@ void reverse_s(char input[]){
     }
 }
 
-/* function for user asking want to continue or not */
-
-void ask_continue(void){
-
-	char choice [10];
-
-	while (1){
-	    printf("Do you want to continue(y/n): ");
-	    fgets(choice, sizeof(choice), stdin);
-
-       	    if (choice[0] == 'y'){
-	        return;
-	    }
-
-	    else if (choice[0]  == 'n'){
-		exit(0);
-	    }
-	    else{
-		printf("Enter y or n only\n");
-	    }
-	}
-}
-
 /*
 * Function Name : reverse
 * Description   : This function reverse string
@@ -137,3 +114,84 @@ void ungetch(int8_t c)
         buf[bufp++] = c;
     }
 }
+
+
+/* function for user asking want to continue or not */
+
+void ask_continue(void){
+
+        char choice [10];
+
+        while (1){
+            printf("Do you want to continue(y/n): ");
+            fgets(choice, sizeof(choice), stdin);
+
+            if (choice[0] == 'y'){
+                return;
+            }
+
+            else if (choice[0]  == 'n'){
+                exit(0);
+            }
+            else{
+                printf("Enter y or n only\n");
+            }
+        }
+}
+
+
+int ask_to_continue() {
+
+    char choice;
+
+    printf("Do you want to continue? (y/n): ");
+    scanf(" %c", &choice);
+
+    if (choice == 'y' || choice == 'Y') {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+/*
+* Function Name : push
+* Description   : this function push values on stack
+* Author        : Karan Sathvara
+* Created       : 03-03-2026
+*/
+
+#define MAXVAL 100
+
+int sp = 0;
+double stack[MAXVAL];
+
+void push(double f){
+    if (sp < MAXVAL){
+        stack[sp++] = f;
+    }
+    else{
+        printf("stack is full\n");
+        return;
+    }
+}
+
+
+
+/*
+* Function Name : pop
+* Description   : this function return top value from stack
+* Author        : Karan Sathvara
+* Created       : 03-03-2026
+*/
+
+double pop(void){
+    if (sp > 0)
+        return stack[--sp];
+    else {
+        printf("stack is empty\n");
+        return 0;
+    }
+}
+

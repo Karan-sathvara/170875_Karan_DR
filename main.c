@@ -283,6 +283,39 @@ int main(int argc, char *argv[]){
 
 /* --------- Module 7  --------- */
 
+#elif MODULE == 7 && TASK == 1
+    case_reverse(argc, argv);
+
+#elif MODULE == 7 && TASK == 2
+    handle_nonGraphic_chars();
+
+#elif MODULE == 7 && TASK == 3
+    extended_minprintf();
+
+#elif MODULE == 7 && TASK == 4
+    custom_minscanf();
+
+#elif MODULE == 7 && TASK == 5
+    RPN_using_scanf();
+
+#elif MODULE == 7 && TASK == 6
+    file_compare(argc, argv);
+
+#elif MODULE == 7 && TASK == 7
+    searchPatternInFiles(argc, argv);
+
+#elif MODULE == 7 && TASK == 8
+    print_files_pageWise(argc, argv);
+
+#elif MODULE == 7 && TASK == 9
+    space_and_time_efficient();
+
+/* newline version in Q-5 */
+#elif MODULE == 7 && TASK == 55
+    RPN_interactive();
+
+#elif MODULE == 8 && TASK == 1
+    file_write(argc, argv);
 
 #endif
 

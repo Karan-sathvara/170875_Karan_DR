@@ -59,22 +59,22 @@ void my_strncat(char *str1, char *str2, int8_t n){
 * Created       : 30-03-2026
 */
 
-void my_strncmp(char *str1, char *str2, int8_t n){
+int my_strncmp(const char *str1, const char *str2, int8_t n) {
 
-    while(n-- > 0){
-	if(*str1 != *str2){
-	    printf("No match found\n");
-	    return;
-	}
+    while (n-- > 0) {
+        if (*str1 != *str2) {
+            return *str1 - *str2;
+        }
 
-	if(*str1 == '\0'){
-	    break;
-	}
+        if (*str1 == '\0') {
+            return 0;
+        }
 
-	str1++;
-	str2++;
+        str1++;
+        str2++;
     }
-    printf("Match Found\n");
+
+    return 0;
 }
 
 /*
@@ -120,7 +120,15 @@ void versions_of_libFunctions(){
             break;
 
         case 3 :
-            my_strncmp(str1, str2, n);
+	    int16_t result = my_strncmp(str1, str2, n);
+
+	    if (result == 0){
+    		printf("Both strings are equal\n");
+	    } else if (result < 0) {
+    		printf("str1 is smaller than str2 by %d\n", result);
+	    } else {
+    		printf("str1 is greater than str2 by %d\n", result);
+	    }
             break;
 
 	default :

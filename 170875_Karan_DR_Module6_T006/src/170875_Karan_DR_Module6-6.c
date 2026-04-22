@@ -229,7 +229,7 @@ int getword(char *word, int16_t lim)
             *w++ = ch;
         }
 
-        if (!isalnum(ch)) {
+        if (!isalnum(ch) && ch != '_') {
             *w = '\0';
             return ch;
         }

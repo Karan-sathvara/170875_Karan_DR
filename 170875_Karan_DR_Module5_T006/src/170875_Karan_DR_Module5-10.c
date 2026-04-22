@@ -10,6 +10,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include "function.h"
 
 #define MAXOP 100
 #define NUMBER '0'
@@ -31,13 +32,20 @@ void push(double f){
     }
     else{
         printf("stack is full\n");
-	return;
+        return;
     }
 }
 
 int stack_size() {
     return sp;
 }
+
+/*
+* Function Name : pop
+* Description   : this function return top value from stack
+* Author        : Karan Sathvara
+* Created       : 03-03-2026
+*/
 
 double pop(void){
     if (sp > 0)

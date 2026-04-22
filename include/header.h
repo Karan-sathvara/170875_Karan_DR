@@ -193,5 +193,28 @@ void hashtable_with_macro();
 
 /* ------ Module 7 ------ */
 
+void case_reverse(int8_t argc, char *argv[]);
+
+void handle_nonGraphic_chars();
+
+void extended_minprintf();
+
+void custom_minscanf();
+
+void RPN_using_scanf();
+
+void RPN_interactive();
+
+void file_compare(int8_t argc, char *argv[]);
+
+void searchPatternInFiles(int8_t argc, char *argv[]);
+
+void print_files_pageWise(int8_t argc, char *argv[]);
+
+void space_and_time_efficient();
+
+/* ------ Module 8 ------ */
+
+void file_write(int8_t argc, char *argv[]);
 
 #endif
