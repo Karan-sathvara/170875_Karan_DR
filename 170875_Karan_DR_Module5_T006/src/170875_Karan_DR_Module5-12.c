@@ -143,27 +143,21 @@ void modified_entab_detab_CLI(int argc, char *argv[]){
 	return;
     }
 
-    if (argc < 3) {
-        printf("Usage: ./Exercise_5_11 [en|de] [tabstops..]\n");
-        return;
-    }
-
     int8_t idxM = 1;
     int8_t idxN = 8;
 
-    for (int8_t i = 2; i < argc; i++) {
-
-        if (argv[i][0] == '-') {
-            idxM = atoi(&argv[i][1]);
-        }
-        else if (argv[i][0] == '+') {
-            idxN = atoi(&argv[i][1]);
-        }
-	else{
-	    printf("Give input like [en/de] -m +n\n");
-	    return;
-	}
+    if (argc != 4) {
+        printf("Usage: en/de -m +n\n");
+        return;
     }
+
+    if (argv[2][0] != '-' || argv[3][0] != '+') {
+        printf("Order must be: -m +n\n");
+        return;
+    }
+
+    idxM = atoi(&argv[2][1]);
+    idxN = atoi(&argv[3][1]);
 
     if (idxM < 1){
         idxM = 1;

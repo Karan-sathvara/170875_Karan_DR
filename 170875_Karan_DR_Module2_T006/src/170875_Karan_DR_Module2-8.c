@@ -11,17 +11,17 @@
 
 void rightrot(){
 
-    uint16_t x;
+    int16_t x;
     int16_t n;
 
     printf("Enter value of x: ");
-    scanf("%hu", &x);
+    scanf("%hd", &x);
 
     printf("Enter value of n: ");
     scanf("%hd", &n);
 
-    if(n < 0){
-        printf("Enter only positive values\n");
+    if(n < 0 || x < 0){
+        printf("Number must be non Negative\n");
         return;
     }
 

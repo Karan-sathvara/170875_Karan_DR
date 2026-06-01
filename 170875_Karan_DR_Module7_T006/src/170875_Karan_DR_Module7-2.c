@@ -42,7 +42,7 @@ void handle_nonGraphic_chars(){
         }
 	else{
             printf("[0x%02x|%04o]", buffer[idxS], buffer[idxS]);
-            count += 11;
+                count += 11;
         }
 
         if (count >= MAXLINE) {

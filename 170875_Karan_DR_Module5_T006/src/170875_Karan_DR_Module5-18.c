@@ -14,7 +14,6 @@
 
 enum { NAME, PARENS, BRACKETS };
 
-
 /*
 * Datatype Name : tokentype : type of last token
 		  token[]   : last token string
@@ -37,7 +36,7 @@ int gettoken(void);
 void dcl(void);
 void dirdcl(void);
 
-int errorFlag = 0;
+int8_t errorFlag = 0;
 
 /*
 * Function Name : dcl
@@ -48,10 +47,10 @@ int errorFlag = 0;
 
 void dcl(void)
 {
-    int ns;
+    int8_t idx;
 
-    for (ns = 0; gettoken() == '*'; )
-        ns++;
+    for (idx = 0; gettoken() == '*'; )
+        idx++;
 
     dirdcl();
 
@@ -59,7 +58,7 @@ void dcl(void)
 	return;
     }
 
-    while (ns-- > 0)
+    while (idx-- > 0)
         strcat(out, " pointer to");
 }
 
@@ -162,6 +161,7 @@ int gettoken(void)
 	else{
 	    printf("Syntax error : missing ]\n");
 	    errorFlag = 1;
+	    return tokentype = '\n';
 	}
         *p = '\0';
 
@@ -197,6 +197,9 @@ int gettoken(void)
 void recover(void)
 {
     int c;
+
+    if (tokentype == '\n')
+        return;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
@@ -253,40 +256,3 @@ void modified_dcl()
     }
 }
 
-/*
-void modified_dcl()
-{
-    printf("Enter input : ");
-    while (gettoken() != EOF) {
-	errorFlag = 0;
-
-        out[0] = '\0';
-	name[0] = '\0';
-	datatype[0] = '\0';
-
-        if (tokentype != NAME) {
-            printf("Invalid datatype\n");
-            recover();
-            continue;
-        }
-
-        strcpy(datatype, token);
-
-        dcl();
-
-	if (errorFlag) {
-    	   recover();
-    	   continue;
-	}
-
-	if (tokentype != '\n' && tokentype != EOF) {
-    	    printf("Invalid : syntax error\n");
-    	    recover();
-    	    continue;
-	}
-
-    	printf("%s: %s %s\n", name, out, datatype);
-    }
-}
-
-*/

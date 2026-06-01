@@ -41,6 +41,7 @@ char *noise[] = {
 
 int is_noise(char *word) {
     int16_t idx = 0;
+
     while (noise[idx] != NULL) {
         if (strcmp(word, noise[idx]) == 0){
             return 1;
@@ -263,7 +264,11 @@ void word_freq_withoutNoise_withLineNo_using_BST() {
        	    lineno++;
     	}
 
-        if (isalpha(word[0]) && !is_noise(word)){
+        for (int16_t idx = 0; word[idx]; idx++) {
+            word[idx] = tolower(word[idx]);
+        }
+
+        if (isalpha(word[0]) && !(is_noise(word)){
             root = addtree(root, word);
 	}
     }
@@ -278,8 +283,8 @@ void word_freq_withoutNoise_withLineNo_using_BST() {
 
 
 
-/* To convert all in Lower case */
-/*      for (int16_t idx = 0; word[idx]; idx++) {
+/* To convert all in Lower case
+      for (int16_t idx = 0; word[idx]; idx++) {
             word[idx] = tolower(word[idx]);
         }
 */

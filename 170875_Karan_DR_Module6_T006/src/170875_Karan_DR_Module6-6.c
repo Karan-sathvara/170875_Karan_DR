@@ -229,14 +229,14 @@ int getword(char *word, int16_t lim)
             *w++ = ch;
         }
 
-        if (!isalnum(ch) && ch != '_') {
+	if (!isalnum(ch) && ch != '_' && ch != '.'){
             *w = '\0';
             return ch;
         }
 
         while(--lim > 0){
             ch = getch();
-            if (!isalnum(ch) && ch != '-' && ch != '_'){
+            if (!isalnum(ch) && ch != '-' && ch != '_' && ch != '.'){
                 ungetch(ch);
                 break;
             }
@@ -275,6 +275,17 @@ void hashtable_with_macro()
                 break;
 
             install(name, defn);
+        }
+        else
+        {
+            struct nlist *node = lookup(word);
+
+            if (node != NULL) {
+                printf("%s ", node->defn);
+            }
+            else {
+                printf("%s ", word);
+            }
         }
     }
 

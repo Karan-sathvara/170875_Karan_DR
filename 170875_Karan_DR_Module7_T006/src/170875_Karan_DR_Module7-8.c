@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include "header.h"
+#include <string.h>
 
 #define PAGE_LENGTH 20
 
@@ -22,12 +23,12 @@
 
 void print_files_pageWise(int8_t argc, char *argv[]){
 
-    int8_t lineCount = 0;
-    int8_t pageCount = 1;
+    uint8_t lineCount = 0;
+    uint8_t pageCount = 1;
     char line[100];
 
     if (argc < 2) {
-        printf("\nUsage: [filename]\n");
+        printf("\nUsage: ./bin/main.out [filename]\n");
         return;
     }
 
@@ -35,6 +36,11 @@ void print_files_pageWise(int8_t argc, char *argv[]){
     printf("\nTitle : %s\n", argv[1]);
 
     while (fgets(line, sizeof(line), fp) != NULL){
+
+	if(strcmp(line, "\n") == 0){
+	    continue;
+	}
+
         printf("%s", line);
         lineCount++;
 
@@ -52,7 +58,6 @@ void print_files_pageWise(int8_t argc, char *argv[]){
 	    }
         }
     }
-
     printf("\nEnd of File\n");
     fclose(fp);
 }

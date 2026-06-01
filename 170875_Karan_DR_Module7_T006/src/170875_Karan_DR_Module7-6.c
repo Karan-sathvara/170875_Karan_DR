@@ -48,19 +48,19 @@ void file_compare(int8_t argc, char *argv[]){
         char *file2 = fgets(line2, sizeof(line2), fp2);
 
         if (file1 == NULL && file2 == NULL){
-	    printf("Files are identical.\n");
+	    printf("\tFiles are identical.\n");
             break;
 	}
 
         if (file1 == NULL || file2 == NULL) {
-            printf("Files have different lengths.\n");
+            printf("\tFiles have different lengths.\n");
             break;
         }
 
 	if(strcmp(line1, line2) != 0){
-	    printf("files differ at line %d\n",lineNo);
-	    printf("File1: %s", line1);
-    	    printf("File2: %s", line2);
+	    printf("\tfiles differ at line %d\n",lineNo);
+	    printf("\tFile1: %s", line1);
+    	    printf("\tFile2: %s", line2);
 
 	    break;
         }

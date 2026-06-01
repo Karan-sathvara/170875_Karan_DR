@@ -215,6 +215,26 @@ void space_and_time_efficient();
 
 /* ------ Module 8 ------ */
 
-void file_write(int8_t argc, char *argv[]);
+void sysCall_cat(int8_t argc, char *argv[]);
+
+void library_cat(int8_t argc, char *argv[]);
+
+void fopen_with_fields(int8_t argc, char *argv[]);
+
+void fopen_with_explicit_bit(int8_t argc, char *argv[]);
+
+void write_in_files(int8_t argc, char *argv[]);
+
+void fseek_using_lseek(int8_t argc, char *argv[]);
+
+void modified_fsize(int8_t argc,char **argv);
+
+void my_calloc();
+
+void my_calloc_Book();
+
+void modified_malloc();
+
+void malloc_with_bfree();
 
 #endif

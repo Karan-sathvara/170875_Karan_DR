@@ -188,7 +188,7 @@ void getline_using_ptr(char *str1, int16_t max){
     int8_t idx = 0;
     int16_t ch;
 
-    while(idx < max - 1 && (ch = getchar()) != EOF && ch != '\n'){
+    while(idx < max - 1 && (ch = getchar()) != EOF){
 	*(str1 + idx) = ch;
 	idx++;
     }

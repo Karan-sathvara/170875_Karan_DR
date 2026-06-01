@@ -170,72 +170,66 @@ int strcmp_dir(char *s1, char *s2)
 }
 
 /*
+* Function Name : split_fields
+* Description   : this function split fields
+* Author        : Karan Sathvara
+* Created       : 07-04-2026
+*/
+
+#define MAXFIELDS 50
+
+int split_fields(char *line, char *fields[]) {
+    int8_t count = 0;
+    char *save;
+
+    char *token = strtok_r(line, ",", &save);
+    while (token != NULL && count < MAXFIELDS) {
+
+        while (*token == ' ') token++;
+        fields[count++] = token;
+
+        token = strtok_r(NULL, ",", &save);
+    }
+
+    return count;
+}
+
+/*
 * Function Name : compare_fields
 * Description   : This function Identify and sort specific fields within each line
 * Author        : Karan Sathvara
 * Created       : 07-04-2026
 */
 
-int16_t compare_fields(void *a, void *b)
+int compare_lines(void *a, void *b)
 {
-    char *line1 = (char *)a;
-    char *line2 = (char *)b;
-
     char temp1[1000], temp2[1000];
-    strcpy(temp1, line1);
-    strcpy(temp2, line2);
+    strcpy(temp1, (char *)a);
+    strcpy(temp2, (char *)b);
 
-    char *save1, *save2;
+    char *fields1[MAXFIELDS];
+    char *fields2[MAXFIELDS];
 
-    /* Category: Science, Page: 42  */
-    /* Category: Maths, Page: 4  */
+    int8_t n1 = split_fields(temp1, fields1);
+    int8_t n2 = split_fields(temp2, fields2);
 
-    char *field1_1 = strtok_r(temp1, ",", &save1);
-    char *field1_2 = strtok_r(NULL, ",", &save1);
+    int8_t n = (n1 < n2) ? n1 : n2;
 
-    char *field2_1 = strtok_r(temp2, ",", &save2);
-    char *field2_2 = strtok_r(NULL, ",", &save2);
+    for (int i = 0; i < n; i++) {
 
-    if (!field1_2 || !field2_2)
-        return strcmp(line1, line2);
+        int8_t result = 0;
 
-    char *cat1 = strchr(field1_1, ':');
-    char *cat2 = strchr(field2_1, ':');
-    char *page1 = strchr(field1_2, ':');
-    char *page2 = strchr(field2_2, ':');
+	if (inumericFlag)
+            result = numcmp(fields1[i], fields2[i]);
+        else
+            result = strcmp(fields1[i], fields2[i]);
 
-    if (!cat1 || !cat2 || !page1 || !page2)
-        return 0;
+        if (result != 0)
+            return result;
+    }
 
-    cat1++; cat2++;
-    page1++; page2++;
-
-    while (*cat1 == ' ') cat1++;
-    while (*cat2 == ' ') cat2++;
-    while (*page1 == ' ') page1++;
-    while (*page2 == ' ') page2++;
-
-    if (inumericFlag)
-        return numcmp(page1, page2);
-
-    int8_t result = 0;
-
-    if (idirectoryFlag && ifoldFlag)
-        result = strcmp_dir(cat1, cat2);
-    else if (ifoldFlag)
-        result = strcmp_fold(cat1, cat2);
-    else
-        result = strcmp(cat1, cat2);
-
-    if (result != 0)
-        return result;
-
-    if (inumericFlag)
-        return numcmp(page1, page2);
-    else
-        return strcmp(page1, page2);
+    return n1 - n2;
 }
-
 
 /*
 * Function Name : swap
@@ -259,7 +253,7 @@ void swap(void *arr[], int16_t start, int16_t end)
 * Created       : 07-04-2026
 */
 
-void my_qsort(void *arr[], int16_t start, int16_t end, int16_t (*comp)(void *, void *), int16_t reverseFlag)
+void my_qsort(void *arr[], int16_t start, int16_t end, int (*comp)(void *, void *), int16_t reverseFlag)
 {
     int16_t idx, pivotIdx;
 
@@ -273,7 +267,7 @@ void my_qsort(void *arr[], int16_t start, int16_t end, int16_t (*comp)(void *, v
 
     for (idx = start + 1; idx <= end; idx++) {
 
-        int16_t result = (*comp)(arr[idx], arr[start]);
+        int result = (*comp)(arr[idx], arr[start]);
 
         if ((!reverseFlag && result < 0) || (reverseFlag && result > 0))
         {
@@ -334,9 +328,9 @@ void sort_specific_fields(int8_t argc, char *argv[])
 
     if ((nlines = readlines(lineptr, MAXLINES)) >= 0) {
 
-        int16_t (*comp)(void *, void *);
+        int (*comp)(void *, void *);
 
-	comp = compare_fields;
+	comp = compare_lines;
 
         my_qsort((void **)lineptr, 0, nlines - 1, comp, ireverseFlag);
 

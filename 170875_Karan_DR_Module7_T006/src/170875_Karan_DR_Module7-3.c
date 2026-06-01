@@ -122,7 +122,7 @@ void extended_minprintf()
 
     int8_t x = 10;
 
-    minprintf("\tInteger : %d\n", 10);
+    minprintf("\tInteger : %d %d\n", 10, 20);
     minprintf("\tFloat : %f\n", 12.54);
     minprintf("\tlong int : %ld\n", 12345678);
     minprintf("\tDouble : %lf\n", 82.67890);

@@ -24,5 +24,4 @@ double pop(void);
 int getch(void);
 void ungetch(int8_t c);
 
-
 #endif

@@ -23,7 +23,6 @@ void writelines(char *lineptr[], int8_t nlines);
 void my_qsort(void *lineptr[], int8_t start, int8_t end, int8_t (*comp)(void *, void *), int8_t reverseFlag);
 int8_t numcmp(char *, char *);
 
-
 /*
 * Function Name : getline_custom
 * Description   : takes input from user

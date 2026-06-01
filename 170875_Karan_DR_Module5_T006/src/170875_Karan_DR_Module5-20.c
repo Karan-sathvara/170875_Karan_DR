@@ -84,6 +84,7 @@ void dirdcl(void) {
             strcat(out, " array");
             strcat(out, token);
             strcat(out, " of");
+
         }
 	else if (tokentype == '(') {
             strcat(out, " function (");
@@ -91,9 +92,12 @@ void dirdcl(void) {
                 if (tokentype == ','){
 		    strcat(out, ", ");
 		}
+		else if (tokentype == BRACKETS){
+		    strcat(out,"array");
+		}
                 else if (tokentype == NAME || tokentype == QUALIFIER) {
                     strcat(out, token);
-//                    strcat(out, " ");
+                    strcat(out, " ");
                 }
 		else if (tokentype == '*') {
                     strcat(out, "pointer to ");
@@ -171,7 +175,8 @@ int gettoken(void) {
             ungetc(c, stdin);
         }
 
-        if (strcmp(token, "const") == 0 || strcmp(token, "volatile") == 0){
+        if (strcmp(token, "const") == 0 || strcmp(token, "volatile") == 0 ||
+		strcmp(token, "short") == 0 || strcmp(token, "long") == 0){
             return tokentype = QUALIFIER;
 	}
         return tokentype = NAME;

@@ -59,7 +59,7 @@ void searchPatternInFiles(int8_t argc, char *argv[]){
         int8_t found = search(stdin, pattern, "stdin");
 
         if (found == 0) {
-            printf("\tPattern not found in stdin\n");
+            printf("\t%s not found in stdin\n", pattern);
         }
     }
     else {

@@ -43,7 +43,7 @@ char *noise[] = {
 int is_noise(char *word) {
     int16_t idx = 0;
     while (noise[idx] != NULL) {
-        if (strcmp(word, noise[idx]) == 0){
+        if (strcasecmp(word, noise[idx]) == 0){
             return 1;
 	}
         idx++;
@@ -58,6 +58,7 @@ int is_noise(char *word) {
 */
 
 struct tnode {
+
     char *word;
     uint16_t count;
     struct tnode *left;

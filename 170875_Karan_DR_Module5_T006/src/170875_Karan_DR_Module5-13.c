@@ -4,7 +4,7 @@
 *               : By default, n is set to 10, but it can be changed by an optional argument
 *		: tail -n : prints the last n lines
 * Author        : Karan Sathvara
-* Created       : 00-04-2026
+* Created       : 06-04-2026
 */
 
 
@@ -18,42 +18,33 @@
 * Function Name : print_n_lines
 * Description   : This function will print last n lines
 * Author        : Karan Sathvara
-* Created       : 00-04-2026
+* Created       : 06-04-2026
 */
 
 void print_n_lines(char *str, int8_t nlines) {
 
-    int8_t total_lines = 0;
-    int8_t idx = 0;
+    int8_t len = strlen(str);
+    int8_t line_Count = 0;
+    int8_t idx = len - 1;
 
-    while (str[idx] != '\0') {
-        if (str[idx] == '\n')
-            total_lines++;
-        idx++;
+    while (idx >= 0) {
+        if (str[idx] == '\n') {
+            line_Count++;
+            if (line_Count == nlines + 1) {
+                idx++;
+                break;
+            }
+        }
+        idx--;
     }
 
-    if (idx > 0 && str[idx - 1] != '\n')
-        total_lines++;
-
-    int8_t skip = total_lines - nlines;
-    if (skip < 0){
-        printf("Not enough lines are there\n");
-	return;
+    if (idx < 0){
+        idx = 0;
     }
 
-    int8_t current_line = 0;
-    idx = 0;
-
-    while (str[idx] != '\0' && current_line < skip) {
-        if (str[idx] == '\n')
-            current_line++;
-        idx++;
-    }
-
-    printf("\nOutput is : \n");
-    while (str[idx] != '\0') {
+    printf("output lines : \n");
+    for (; idx < len; idx++) {
         putchar(str[idx]);
-        idx++;
     }
 }
 
@@ -61,14 +52,10 @@ void print_n_lines(char *str, int8_t nlines) {
 * Function Name : tail
 * Description   : This function validate command line args and take input
 * Author        : Karan Sathvara
-* Created       : 00-04-2026
+* Created       : 06-04-2026
 */
 
 void tail(int8_t argc, char *argv[]){
-
-    char str[1000];
-    int16_t ch;
-    int16_t idx = 0;
 
     int8_t nlines = 10;
 
@@ -88,12 +75,28 @@ void tail(int8_t argc, char *argv[]){
         return;
     }
 
+    int16_t ch;
+    int16_t idx = 0;
+    char *str = NULL;
+    uint16_t size = 0;
+
     printf("\nEnter input lines : \n");
     while((ch = getchar()) != EOF){
-	str[idx++] = ch;
+
+        if (idx >= size) {
+            size = (size == 0) ? 1024 : size * 2;
+            str = realloc(str, size);
+
+            if (str == NULL) {
+                printf("Memory allocation failed\n");
+                return;
+            }
+    	}
+        str[idx++] = ch;
     }
     str[idx] = '\0';
 
     print_n_lines(str, nlines);
 
+    free(str);
 }

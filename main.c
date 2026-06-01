@@ -315,7 +315,37 @@ int main(int argc, char *argv[]){
     RPN_interactive();
 
 #elif MODULE == 8 && TASK == 1
-    file_write(argc, argv);
+    sysCall_cat(argc, argv);
+
+#elif MODULE == 8 && TASK == 11
+    library_cat(argc, argv);
+
+#elif MODULE == 8 && TASK == 2
+    fopen_with_fields(argc, argv);
+
+#elif MODULE == 8 && TASK == 22
+    fopen_with_explicit_bit(argc, argv);
+
+#elif MODULE == 8 && TASK == 3
+    write_in_files(argc, argv);
+
+#elif MODULE == 8 && TASK == 4
+    fseek_using_lseek(argc, argv);
+
+#elif MODULE == 8 && TASK == 5
+    modified_fsize(argc,argv);
+
+#elif MODULE == 8 && TASK == 6
+    my_calloc_Book();
+
+#elif MODULE == 8 && TASK == 66
+    my_calloc();
+
+#elif MODULE == 8 && TASK == 7
+    modified_malloc();
+
+#elif MODULE == 8 && TASK == 8
+    malloc_with_bfree();
 
 #endif
 
